@@ -44,7 +44,7 @@ export default function Home() {
         id="hero"
         className="bg-background lg:px-32 md:px-12 px-5 py-20 grid place-items-center grid-cols-2 lg:items-start md:items-center lg:pt-36 gap-12 md:gap-5"
       >
-        <div className="col-span-2 md:col-span-1 md:pe-2 lg:pe-0">
+        <div className="col-span-2 md:col-span-1 md:pe-2 lg:pe-0 lg:pt-12">
           <h1 className="text-heading1 font-extrabold text-primary text-center md:text-start">
             DESA KARANG DALEM TUA
           </h1>
