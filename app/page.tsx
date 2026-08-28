@@ -65,7 +65,7 @@ export default function Home() {
             </svg>
           </button>
         </div>
-        <div className=" col-span-2 md:col-span-1 flex items-center lg:gap-12 md:gap-3 gap-5">
+        <div className=" col-span-2 md:col-span-1 flex items-center lg:items-start lg:gap-12 md:gap-3 gap-5">
           <figure className="relative w-32 h-44 md:w-38 md:h-56 lg:w-87.25 lg:h-122.25">
             <Image
               src={Image1}
