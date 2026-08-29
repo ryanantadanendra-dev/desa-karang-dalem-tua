@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Image from "next/image";
 import Image1 from "../../public/jalak-bali.webp";
+import ScrollToHash from "@/components/ScrollToHash";
 
 const images = {
   left: [{ src: Image1.src }, { src: Image1.src }, { src: Image1.src }],
@@ -15,7 +16,8 @@ const ProyekPage = () => {
   return (
     <>
       <Header text="PROYEK KAMI" />
-      <main className="w-screen h-screen">
+      <main className="w-screen min-h-screen">
+        <ScrollToHash />
         <section
           id="jalak-bali"
           className="w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center lg:items-start md:items-center py-12 lg:px-32 md:px-12 px-5 "

@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant-garamond",
@@ -27,10 +28,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${cormorantGaramond.variable} ${plusJakartaSans.variable} overflow-x-hidden h-full antialiased`}
+      className={`${cormorantGaramond.variable} ${plusJakartaSans.variable} overflow-x-hidden h-full antialiased scroll-smooth`}
     >
-      <Navbar />
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="">
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

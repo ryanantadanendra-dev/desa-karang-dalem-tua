@@ -1,27 +1,33 @@
 import Image from "next/image";
 import Image1 from "../public/jalak-bali.webp";
 import Link from "next/link";
+import ScrollBtn from "@/components/ScrollBtn";
 
 const projects = [
   {
     title: "Penangkaran Jalak Bali",
     image: Image1,
+    href: "/proyek#jalak-bali",
   },
   {
     title: "Kerajinan Perak",
     image: Image1,
+    href: "/proyek#perak",
   },
   {
     title: "Biogas",
     image: Image1,
+    href: "/proyek#biogas",
   },
   {
     title: "Budidaya Lebah Madu",
     image: Image1,
+    href: "/proyek#lebah-madu",
   },
   {
     title: "Kerajinan Daur Ulang",
     image: Image1,
+    href: "/proyek#daur-ulang",
   },
 ];
 
@@ -51,7 +57,10 @@ export default function Home() {
           <p className="text-body font-light text-center md:text-start">
             Karang Dalem Tua – Harmoni Tradisi, Alam, dan Kehidupan
           </p>
-          <button className="mt-8 mx-auto md:mx-0 bg-primary text-background w-28 h-12 md:w-44 md:h-16 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1">
+          <ScrollBtn
+            href="/#tentang"
+            className="mt-8 mx-auto md:mx-0 bg-primary text-background w-28 h-12 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1"
+          >
             <p className="text-body">Jelajahi</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +72,7 @@ export default function Home() {
                 d="M598.6 342.6C611.1 330.1 611.1 309.8 598.6 297.3L470.6 169.3C458.1 156.8 437.8 156.8 425.3 169.3C412.8 181.8 412.8 202.1 425.3 214.6L498.7 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L498.7 352L425.3 425.4C412.8 437.9 412.8 458.2 425.3 470.7C437.8 483.2 458.1 483.2 470.6 470.7L598.6 342.7z"
               />
             </svg>
-          </button>
+          </ScrollBtn>
         </div>
         <div className=" col-span-2 md:col-span-1 flex items-center lg:items-start lg:gap-12 md:gap-3 gap-5">
           <figure className="relative w-32 h-44 md:w-38 md:h-56 lg:w-87.25 lg:h-122.25">
@@ -89,7 +98,7 @@ export default function Home() {
         </div>
       </section>
       <section
-        id="about"
+        id="tentang"
         className="text-background w-screen lg:h-261.75 min-h-160 lg:px-32 md:px-12 px-12 py-12 md:py-0 bg-primary grid grid-cols-2 items-center gap-24 md:gap-5"
       >
         <div className="col-span-2 md:col-span-1 h-full flex items-center">
@@ -124,7 +133,10 @@ export default function Home() {
             (ngayah) yang tetap hidup hingga kini. Karang Dalem Tua menghadirkan
             pengalaman Bali yang autentik, tenang, dan sarat makna budaya.
           </article>
-          <button className="lg:mt-20 mt-12  bg-accent text-primary w-28 h-12 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1">
+          <Link
+            href="/tentang-kami"
+            className="lg:mt-20 mt-12  bg-accent text-primary w-28 h-12 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1"
+          >
             <p className="text-body">Jelajahi</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -136,7 +148,7 @@ export default function Home() {
                 d="M598.6 342.6C611.1 330.1 611.1 309.8 598.6 297.3L470.6 169.3C458.1 156.8 437.8 156.8 425.3 169.3C412.8 181.8 412.8 202.1 425.3 214.6L498.7 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L498.7 352L425.3 425.4C412.8 437.9 412.8 458.2 425.3 470.7C437.8 483.2 458.1 483.2 470.6 470.7L598.6 342.7z"
               />
             </svg>
-          </button>
+          </Link>
         </div>
       </section>
       <section
@@ -153,7 +165,7 @@ export default function Home() {
         </div>
         <div className="w-screen flex justify-center flex-wrap lg:gap-44 md:gap-12 gap-5 lg:mt-32 mt-12">
           {projects.map((p, index) => (
-            <div className="">
+            <div key={p.title} className="">
               <figure className="relative lg:w-87.25 lg:h-99.5 md:w-64 w-32 h-44 md:h-80">
                 <Image
                   src={p.image}
@@ -162,12 +174,12 @@ export default function Home() {
                   className="object-cover rounded-tl-[80px] rounded-tr-[80px] rounded-br-0 rounded-bl-0"
                 />
               </figure>
-              <Link
-                href=""
+              <ScrollBtn
+                href={p.href}
                 className="text-body text-center underline text-sky-500 mt-8 block"
               >
                 {p.title}
-              </Link>
+              </ScrollBtn>
             </div>
           ))}
         </div>
