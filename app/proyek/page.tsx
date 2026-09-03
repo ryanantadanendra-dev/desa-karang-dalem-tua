@@ -20,9 +20,9 @@ const ProyekPage = () => {
         <ScrollToHash />
         <section
           id="jalak-bali"
-          className="w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center lg:items-start md:items-center py-12 lg:px-32 md:px-12 px-5 "
+          className="w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center py-12 2xl:px-32 md:px-12 px-5 "
         >
-          <div className="col-span-2 md:col-span-1 pt-12">
+          <div className="col-span-2 md:col-span-1 pt-12 lg:pt-0">
             <h2 className="text-heading2">PENANGKARAN JALAK BALI</h2>
             <article className="text-body mt-6">
               Penangkaran Jalak Bali dimulai pada tahun 2019 sebagai bentuk
@@ -68,7 +68,7 @@ const ProyekPage = () => {
         </section>
         <section
           id="daur-ulang"
-          className="bg-primary text-background w-screen lg:min-h-180 min-h-100 grid grid-cols-2 grid-flow-row place-items-center gap-8 md:gap-8 md:justify-items-center lg:items-start md:items-center py-12 lg:px-32 md:px-12 px-5"
+          className="bg-primary text-background w-screen lg:min-h-180 min-h-100 grid grid-cols-2 grid-flow-row place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center py-12 2xl:px-32 md:px-12 px-5"
         >
           <div className="col-span-2 md:col-span-1 order-2 md:order-1">
             <div className="grid grid-cols-2 gap-3">
@@ -98,7 +98,7 @@ const ProyekPage = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-2 md:col-span-1 pt-12 order-1 md:order-2">
+          <div className="col-span-2 md:col-span-1 pt-12 lg:pt-0 order-1 md:order-2">
             <h2 className="text-heading2">KERAJINAN DAUR ULANG</h2>
             <article className="text-body mt-6">
               Kerajinan daur ulang mulai dikembangkan sejak tahun 2018 oleh
@@ -116,9 +116,9 @@ const ProyekPage = () => {
         </section>
         <section
           id="perak"
-          className="w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center lg:items-start md:items-center py-12 lg:px-32 md:px-12 px-5"
+          className="w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center py-12 2xl:px-32 md:px-12 px-5"
         >
-          <div className="col-span-2 md:col-span-1 pt-12">
+          <div className="col-span-2 md:col-span-1 pt-12 lg:pt-0">
             <h2 className="text-heading2">KERAJINAN PERAK</h2>
             <article className="text-body mt-6">
               Kerajinan perak telah berkembang di Karang Dalem Tua sejak tahun
@@ -167,7 +167,7 @@ const ProyekPage = () => {
         </section>
         <section
           id="lebah-madu"
-          className="bg-primary text-background w-screen lg:min-h-180 min-h-100 grid grid-cols-2 grid-flow-row place-items-center gap-8 md:gap-8 md:justify-items-center lg:items-start md:items-center  py-12 lg:px-32 md:px-12 px-5"
+          className="bg-primary text-background w-screen lg:min-h-180 min-h-100 grid grid-cols-2 grid-flow-row place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center  py-12 2xl:px-32 md:px-12 px-5"
         >
           <div className="col-span-2 md:col-span-1 order-2 md:order-1">
             <div className="grid grid-cols-2 gap-3">
@@ -197,7 +197,7 @@ const ProyekPage = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-2 md:col-span-1 pt-12 order-1 md:order-2">
+          <div className="col-span-2 md:col-span-1 pt-12 lg:pt-0 order-1 md:order-2">
             <h2 className="text-heading2">BUDIDAYA LEBIH MADU</h2>
             <article className="text-body mt-6">
               Budidaya lebah madu Trigona mulai berkembang sebagai bagian dari
@@ -215,9 +215,9 @@ const ProyekPage = () => {
         </section>
         <section
           id="biogas"
-          className="w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center lg:items-start md:items-center py-12 lg:px-32 md:px-12 px-5"
+          className="w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center py-12 2xl:px-32 md:px-12 px-5"
         >
-          <div className="col-span-2 md:col-span-1 pt-12">
+          <div className="col-span-2 md:col-span-1 pt-12 lg:pt-0">
             <h2 className="text-heading2">BIOGAS</h2>
             <article className="text-body mt-6">
               Program biogas dimulai sejak tahun 2018 sebagai upaya pengolahan

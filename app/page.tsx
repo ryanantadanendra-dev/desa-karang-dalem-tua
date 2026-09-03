@@ -48,9 +48,9 @@ export default function Home() {
     <main className="min-w-screen min-h-screen">
       <section
         id="hero"
-        className="bg-background lg:px-32 md:px-12 px-5 py-20 grid place-items-center grid-cols-2 lg:items-start md:items-center lg:pt-36 gap-12 md:gap-5"
+        className="bg-background lg:h-screen lg:px-32 md:px-12 px-5 py-20 grid place-items-center grid-cols-2 2xl:itemssta 2xl:items-start md:items-center gap-12 md:gap-5 xl:gap-20"
       >
-        <div className="col-span-2 md:col-span-1 md:pe-2 lg:pe-0 lg:pt-12">
+        <div className="col-span-2 md:col-span-1 md:pe-2 lg:pe-0 2xl:pt-32">
           <h1 className="text-heading1 font-extrabold text-primary text-center md:text-start">
             DESA KARANG DALEM TUA
           </h1>
@@ -74,8 +74,8 @@ export default function Home() {
             </svg>
           </ScrollBtn>
         </div>
-        <div className=" col-span-2 md:col-span-1 flex items-center lg:items-start lg:gap-12 md:gap-3 gap-5">
-          <figure className="relative w-32 h-44 md:w-38 md:h-56 lg:w-87.25 lg:h-122.25">
+        <div className=" col-span-2 md:col-span-1 flex items-center lg:items-start xl:gap-8 lg:gap-5 md:gap-3 gap-5 2xl:pt-12">
+          <figure className="relative w-32 h-44 md:w-38 md:h-56 lg:w-48 lg:h-72 2xl:w-87.25 2xl:h-122.25">
             <Image
               src={Image1}
               alt="Home Image"
@@ -86,7 +86,8 @@ export default function Home() {
           <figure
             className="relative w-32 h-44
             md:w-46 md:h-100
-            lg:w-87.25 lg:h-186"
+            lg:w-56 
+            2xl:w-87.25 2xl:h-186"
           >
             <Image
               src={Image1}
@@ -99,17 +100,17 @@ export default function Home() {
       </section>
       <section
         id="tentang"
-        className="text-background w-screen lg:h-261.75 min-h-160 lg:px-32 md:px-12 px-12 py-12 md:py-0 bg-primary grid grid-cols-2 items-center gap-24 md:gap-5"
+        className="text-background w-screen lg:min-h-screen 2xl:h-261.75 min-h-160 lg:px-20 2xl:px-32 md:px-12 px-12 py-12 md:py-0 bg-primary grid grid-cols-2 items-center gap-24 md:gap-5"
       >
-        <div className="col-span-2 md:col-span-1 h-full flex items-center">
-          <figure className="relative lg:w-155.5 lg:h-155.5 md:w-80 md:h-80 w-56 h-56">
+        <div className="col-span-2 md:col-span-1 h-full flex items-center lg:pb-12 2xl:pb-0">
+          <figure className="relative 2xl:w-155.5 2xl:h-155.5 lg:w-100 lg:h-100 md:w-80 md:h-80 w-56 h-56">
             <Image
               src={Image1}
               alt="About Section Image"
               fill
               className="object-cover object-top rounded-tl-0 rounded-tr-[80px] rounded-br-0 rounded-bl-[80px]"
             />
-            <figure className="absolute lg:w-89.25 lg:h-89.25 md:w-44 md:h-44 w-36 h-36 lg:-bottom-20 lg:-right-20 md:-right-8 -right-16 -bottom-16">
+            <figure className="absolute 2xl:w-89.25 2xl:h-89.25 lg:w-56 lg:h-56 md:w-44 md:h-44 w-36 h-36 lg:-bottom-20 lg:-right-20 md:-right-8 -right-16 -bottom-16">
               <Image
                 src={Image1}
                 alt="About Section Image"
@@ -120,7 +121,7 @@ export default function Home() {
           </figure>
         </div>
         <div className="col-span-2 md:col-span-1 h-full flex flex-col justify-center">
-          <h2 className="text-background text-heading2 font-extrabold lg:mt-28">
+          <h2 className="text-background text-heading2 font-extrabold 2xl:mt-28">
             Mengenal Desa Adat Karang Dalem Tua
           </h2>
           <article className="text-body mt-6">
@@ -153,7 +154,7 @@ export default function Home() {
       </section>
       <section
         id="proyek"
-        className="w-screen lg:min-h-261.75 min-h-160 px-0 md:px-0 py-20 bg-background"
+        className="w-screen lg:min-h-screen 2xl:min-h-261.75 min-h-160 px-0 md:px-0 py-20 bg-background"
       >
         <div className="px-12 md:px-0">
           <h2 className="text-primary text-heading2 text-center font-extrabold lg:mt-20 ">
@@ -163,10 +164,10 @@ export default function Home() {
             Ragam Kegiatan yang Kami Jaga dan Kembangkan
           </p>
         </div>
-        <div className="w-screen flex justify-center flex-wrap lg:gap-44 md:gap-12 gap-5 lg:mt-32 mt-12">
+        <div className="w-screen flex justify-center flex-wrap 2xl:gap-44 lg:gap-25 md:gap-12 gap-5 lg:mt-32 mt-12">
           {projects.map((p, index) => (
             <div key={p.title} className="">
-              <figure className="relative lg:w-87.25 lg:h-99.5 md:w-64 w-32 h-44 md:h-80">
+              <figure className="relative 2xl:w-87.25 2xl:h-99.5 md:w-64 w-32 h-44 md:h-80">
                 <Image
                   src={p.image}
                   alt={p.title}
@@ -186,7 +187,7 @@ export default function Home() {
       </section>
       <section
         id="tradisi"
-        className="w-screen lg:h-261.75 md:min-h-140 min-h-90 grid grid-cols-2"
+        className="w-screen lg:h-screen 2xl:h-261.75 md:min-h-140 min-h-90 grid grid-cols-2"
       >
         <figure className="col-span-1 relative w-full h-full">
           <Image
@@ -245,13 +246,13 @@ export default function Home() {
       </section>
       <section
         id="alam"
-        className="w-screen lg:h-261.75 min-h-160 px-12 gap-12 grid grid-cols-2 lg:px-12 justify-items-center items-center"
+        className="w-screen lg:h-screen 2xl:h-261.75 min-h-160 px-12 gap-12 grid grid-cols-2 lg:px-12 justify-items-center items-center"
       >
         <h2 className="mt-12 text-heading2 text-center col-span-2">
           SEKILAS PESONA ALAM KAMI
         </h2>
         <div className="col-span-2 md:col-span-1">
-          <figure className="relative grid grid-cols-3 lg:w-156.75 lg:h-470,25 lg:gap-3 gap-1">
+          <figure className="relative grid grid-cols-3 2xl:w-156.75 2xl:h-470,25 2xl:gap-3 lg:gap-1 gap-1">
             {views.map((v, index) => (
               <Image
                 key={index}
@@ -259,12 +260,12 @@ export default function Home() {
                 alt="Pesona Alam Desan Karang Dalem Tua"
                 width={100}
                 height={100}
-                className="object-cover lg:w-52 lg:h-52 md:w-32 md:h-32 w-26 h-26 col-span-1 rounded-4xl"
+                className="object-cover 2xl:w-52 2xl:h-52 lg:w-36 lg:h-36 md:w-32 md:h-32 w-26 h-26 col-span-1 rounded-4xl"
               />
             ))}
           </figure>
         </div>
-        <div className="col-span-2 md:col-span-1 lg:pe-32">
+        <div className="col-span-2 md:col-span-1 2xl:pe-32 lg:pe-12">
           <article className="text-body">
             Karang Dalem Tua menawarkan suasana pedesaan Bali yang alami,
             tenang, dan asri. Hamparan persawahan, aliran Sungai Ayung, serta
@@ -280,7 +281,7 @@ export default function Home() {
           </article>
         </div>
       </section>
-      <section className="w-screen lg:h-170 md:h-150 h-120 lg:px-32 md:px-12 px-5 py-12">
+      <section className="w-screen lg:h-170 md:h-150 h-120 lg:px-12 2xl:px-32 md:px-12 px-5 py-12">
         <figure
           className="w-full h-full relative bg-no-repeat bg-center bg-cover bg-fixed"
           style={{ backgroundImage: `url(${Image1.src})` }}

@@ -17,6 +17,7 @@
   --text-body: clamp(0.6rem, 1vw + 0.1rem, 1.5rem);
   --breakpoint-md: 760px;
   --breakpoint-lg: 1025px;
+  --breakpoint-xl: 1280px;
 }
 
 /* @media (prefers-color-scheme: dark) {
