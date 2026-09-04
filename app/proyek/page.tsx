@@ -42,10 +42,12 @@ const ProyekPage = () => {
               {/* Left column */}
               <div className="flex flex-col gap-3">
                 {images.left.map((img, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={img.src}
                     alt=""
+                    width={100}
+                    height={100}
                     className="w-65 h-65 rounded-md object-cover"
                     style={{ aspectRatio: "auto" }}
                   />
@@ -55,10 +57,12 @@ const ProyekPage = () => {
               {/* Right column */}
               <div className="flex flex-col gap-3">
                 {images.right.map((img, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={img.src}
                     alt=""
+                    width={100}
+                    height={100}
                     className="w-65 h-65 rounded-md object-cover flex-1"
                   />
                 ))}
@@ -75,10 +79,12 @@ const ProyekPage = () => {
               {/* Right column */}
               <div className="flex flex-col gap-3">
                 {images2.right.map((img, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={img.src}
                     alt=""
+                    width={100}
+                    height={100}
                     className="w-65 h-65 rounded-md object-cover flex-1"
                   />
                 ))}
@@ -87,10 +93,12 @@ const ProyekPage = () => {
               {/* Left column */}
               <div className="flex flex-col gap-3">
                 {images2.left.map((img, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={img.src}
                     alt=""
+                    width={100}
+                    height={100}
                     className="w-65 h-65 rounded-md object-cover"
                     style={{ aspectRatio: "auto" }}
                   />
@@ -141,10 +149,12 @@ const ProyekPage = () => {
               {/* Left column */}
               <div className="flex flex-col gap-3">
                 {images.left.map((img, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={img.src}
                     alt=""
+                    width={100}
+                    height={100}
                     className="w-65 h-65 rounded-md object-cover"
                     style={{ aspectRatio: "auto" }}
                   />
@@ -154,10 +164,12 @@ const ProyekPage = () => {
               {/* Right column */}
               <div className="flex flex-col gap-3">
                 {images.right.map((img, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={img.src}
                     alt=""
+                    width={100}
+                    height={100}
                     className="w-65 h-65 rounded-md object-cover flex-1"
                   />
                 ))}
@@ -174,10 +186,12 @@ const ProyekPage = () => {
               {/* Right column */}
               <div className="flex flex-col gap-3">
                 {images2.right.map((img, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={img.src}
                     alt=""
+                    width={100}
+                    height={100}
                     className="w-65 h-65 rounded-md object-cover flex-1"
                   />
                 ))}
@@ -186,10 +200,12 @@ const ProyekPage = () => {
               {/* Left column */}
               <div className="flex flex-col gap-3">
                 {images2.left.map((img, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={img.src}
                     alt=""
+                    width={100}
+                    height={100}
                     className="w-65 h-65 rounded-md object-cover"
                     style={{ aspectRatio: "auto" }}
                   />
@@ -238,10 +254,12 @@ const ProyekPage = () => {
               {/* Left column */}
               <div className="flex flex-col gap-3">
                 {images.left.map((img, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={img.src}
                     alt=""
+                    width={100}
+                    height={100}
                     className="w-65 h-65 rounded-md object-cover"
                     style={{ aspectRatio: "auto" }}
                   />
@@ -251,10 +269,12 @@ const ProyekPage = () => {
               {/* Right column */}
               <div className="flex flex-col gap-3">
                 {images.right.map((img, i) => (
-                  <img
+                  <Image
                     key={i}
                     src={img.src}
                     alt=""
+                    width={100}
+                    height={100}
                     className="w-65 h-65 rounded-md object-cover flex-1"
                   />
                 ))}

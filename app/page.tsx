@@ -6,41 +6,41 @@ import ScrollBtn from "@/components/ScrollBtn";
 const projects = [
   {
     title: "Penangkaran Jalak Bali",
-    image: Image1,
+    image: "/jalak_bali-2.jpg",
     href: "/proyek#jalak-bali",
   },
   {
     title: "Kerajinan Perak",
-    image: Image1,
+    image: "/perak-1.jpg",
     href: "/proyek#perak",
   },
   {
     title: "Biogas",
-    image: Image1,
+    image: "/biogas-1.jpg",
     href: "/proyek#biogas",
   },
   {
     title: "Budidaya Lebah Madu",
-    image: Image1,
+    image: "/lebah-1.jpg",
     href: "/proyek#lebah-madu",
   },
   {
     title: "Kerajinan Daur Ulang",
-    image: Image1,
+    image: "/daur-1.jpg",
     href: "/proyek#daur-ulang",
   },
 ];
 
 const views = [
-  Image1,
-  Image1,
-  Image1,
-  Image1,
-  Image1,
-  Image1,
-  Image1,
-  Image1,
-  Image1,
+  "/sawah-1.jpg",
+  "/sawah-2.jpg",
+  "/sawah-3.jpg",
+  "/petani-1.jpg",
+  "/patung-1.jpg",
+  "/jalan-1.jpg",
+  "/sawah-4.jpg",
+  "/sawah-5.jpg",
+  "/patung-2.jpg",
 ];
 
 export default function Home() {
@@ -77,10 +77,10 @@ export default function Home() {
         <div className=" col-span-2 md:col-span-1 flex items-center lg:items-start xl:gap-8 lg:gap-5 md:gap-3 gap-5 2xl:pt-12">
           <figure className="relative w-32 h-44 md:w-38 md:h-56 lg:w-48 lg:h-72 2xl:w-87.25 2xl:h-122.25">
             <Image
-              src={Image1}
-              alt="Home Image"
+              src="/jalak_bali-3.jpg"
+              alt="Jalak Bali"
               fill
-              className="object-cover rounded-tl-[80px] rounded-tr-[80px] rounded-br-0 rounded-bl-0"
+              className="object-cover object-center rounded-tl-[80px] rounded-tr-[80px] rounded-br-0 rounded-bl-0"
             />
           </figure>
           <figure
@@ -90,10 +90,10 @@ export default function Home() {
             2xl:w-87.25 2xl:h-186"
           >
             <Image
-              src={Image1}
-              alt="Home Image"
+              src="/sawah-1.jpg"
+              alt="Sawah"
               fill
-              className="object-cover rounded-tl-[50px] md:rounded-tl-[80px] rounded-tr-0 rounded-br-[50px] md:rounded-br-[80px] rounded-bl-0"
+              className="object-cover object-center rounded-tl-[50px] md:rounded-tl-[80px] rounded-tr-0 rounded-br-[50px] md:rounded-br-[80px] rounded-bl-0"
             />
           </figure>
         </div>
@@ -105,14 +105,14 @@ export default function Home() {
         <div className="col-span-2 md:col-span-1 h-full flex items-center lg:pb-12 2xl:pb-0">
           <figure className="relative 2xl:w-155.5 2xl:h-155.5 lg:w-100 lg:h-100 md:w-80 md:h-80 w-56 h-56">
             <Image
-              src={Image1}
+              src="/desa-2.jpg"
               alt="About Section Image"
               fill
               className="object-cover object-top rounded-tl-0 rounded-tr-[80px] rounded-br-0 rounded-bl-[80px]"
             />
             <figure className="absolute 2xl:w-89.25 2xl:h-89.25 lg:w-56 lg:h-56 md:w-44 md:h-44 w-36 h-36 lg:-bottom-20 lg:-right-20 md:-right-8 -right-16 -bottom-16">
               <Image
-                src={Image1}
+                src="/desa-1.jpg"
                 alt="About Section Image"
                 fill
                 className="object-cover object-top rounded-tl-0 lg:rounded-tr-[80px] md:rounded-tr-[50px] rounded-br-0 lg:rounded-bl-[80px] md:rounded-bl-[50px]"
@@ -218,15 +218,15 @@ export default function Home() {
         </figure>
         <figure className="col-span-1 relative w-full h-full">
           <Image
-            src={Image1}
-            alt="Penjor Galungan"
+            src="/ruang-1.jpg"
+            alt="Tata Ruang Pura"
             fill
             className="object-cover"
           />
           <div className="overlay absolute w-full h-full bg-black opacity-35 z-0" />
           <div className="z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h2 className="text-background text-center text-heading2">
-              Penjor Galungan
+              Tata Ruang Pura
             </h2>
             <button className="lg:mt-3 mt-8 mx-auto bg-transparent border-2 border-background text-background w-28 h-12 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1">
               <p className="text-body">Jelajahi</p>
@@ -284,7 +284,7 @@ export default function Home() {
       <section className="w-screen lg:h-170 md:h-150 h-120 lg:px-12 2xl:px-32 md:px-12 px-5 py-12">
         <figure
           className="w-full h-full relative bg-no-repeat bg-center bg-cover bg-fixed"
-          style={{ backgroundImage: `url(${Image1.src})` }}
+          style={{ backgroundImage: `url(/patung-3.jpg)` }}
         >
           <div className="absolute inset-0 bg-black/40 z-0" />
           <div className="absolute w-full px-4 lg:px-32 text-background z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
