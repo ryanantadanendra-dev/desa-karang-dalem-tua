@@ -6,41 +6,41 @@ import ScrollBtn from "@/components/ScrollBtn";
 const projects = [
   {
     title: "Penangkaran Jalak Bali",
-    image: "/jalak_bali-2.jpg",
+    image: "/jalak_bali-2.webp",
     href: "/proyek#jalak-bali",
   },
   {
     title: "Kerajinan Perak",
-    image: "/perak-1.jpg",
+    image: "/perak-1.webp",
     href: "/proyek#perak",
   },
   {
     title: "Biogas",
-    image: "/biogas-1.jpg",
+    image: "/biogas-1.webp",
     href: "/proyek#biogas",
   },
   {
     title: "Budidaya Lebah Madu",
-    image: "/lebah-1.jpg",
+    image: "/lebah-1.webp",
     href: "/proyek#lebah-madu",
   },
   {
     title: "Kerajinan Daur Ulang",
-    image: "/daur-1.jpg",
+    image: "/daur-1.webp",
     href: "/proyek#daur-ulang",
   },
 ];
 
 const views = [
-  "/sawah-1.jpg",
-  "/sawah-2.jpg",
-  "/sawah-3.jpg",
-  "/petani-1.jpg",
-  "/patung-1.jpg",
-  "/jalan-1.jpg",
-  "/sawah-4.jpg",
-  "/sawah-5.jpg",
-  "/patung-2.jpg",
+  "/sawah-1.webp",
+  "/sawah-2.webp",
+  "/sawah-3.webp",
+  "/petani-1.webp",
+  "/patung-1.webp",
+  "/jalan-1.webp",
+  "/sawah-4.webp",
+  "/sawah-5.webp",
+  "/patung-2.webp",
 ];
 
 export default function Home() {
@@ -59,7 +59,7 @@ export default function Home() {
           </p>
           <ScrollBtn
             href="/#tentang"
-            className="mt-8 mx-auto md:mx-0 bg-primary text-background w-28 h-12 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1"
+            className=" mt-8 mx-auto md:mx-0 bg-primary text-background w-28 h-12 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1"
           >
             <p className="text-body">Jelajahi</p>
             <svg
@@ -77,10 +77,12 @@ export default function Home() {
         <div className=" col-span-2 md:col-span-1 flex items-center lg:items-start xl:gap-8 lg:gap-5 md:gap-3 gap-5 2xl:pt-12">
           <figure className="relative w-32 h-44 md:w-38 md:h-56 lg:w-48 lg:h-72 2xl:w-87.25 2xl:h-122.25">
             <Image
-              src="/jalak_bali-3.jpg"
+              src="/patung-3.webp"
               alt="Jalak Bali"
-              fill
-              className="object-cover object-center rounded-tl-[80px] rounded-tr-[80px] rounded-br-0 rounded-bl-0"
+              sizes="(max-width: 759px) 128px, (max-width: 1024px) 152px, (max-width: 1279px) 192px, 349px"
+              width={2000}
+              height={1365}
+              className="object-cover object-center w-full h-full rounded-tl-[80px] rounded-tr-[80px] rounded-br-0 rounded-bl-0"
             />
           </figure>
           <figure
@@ -90,10 +92,12 @@ export default function Home() {
             2xl:w-87.25 2xl:h-186"
           >
             <Image
-              src="/sawah-1.jpg"
-              alt="Sawah"
-              fill
-              className="object-cover object-center rounded-tl-[50px] md:rounded-tl-[80px] rounded-tr-0 rounded-br-[50px] md:rounded-br-[80px] rounded-bl-0"
+              src="/ruang-2.webp"
+              alt="Patung"
+              sizes="(max-width: 759px) 128px, (max-width: 1024px) 184px, (max-width: 1279px) 224px, 349px"
+              width={1365}
+              height={2000}
+              className="object-cover object-center w-full h-full rounded-tl-[50px] md:rounded-tl-[80px] rounded-tr-0 rounded-br-[50px] md:rounded-br-[80px] rounded-bl-0"
             />
           </figure>
         </div>
@@ -105,17 +109,21 @@ export default function Home() {
         <div className="col-span-2 md:col-span-1 h-full flex items-center lg:pb-12 2xl:pb-0">
           <figure className="relative 2xl:w-155.5 2xl:h-155.5 lg:w-100 lg:h-100 md:w-80 md:h-80 w-56 h-56">
             <Image
-              src="/desa-2.jpg"
+              src="/desa-2.webp"
               alt="About Section Image"
-              fill
-              className="object-cover object-top rounded-tl-0 rounded-tr-[80px] rounded-br-0 rounded-bl-[80px]"
+              sizes="(max-width: 759px) 224px, (max-width: 1024px) 320px, (max-width: 1279px) 400px, 777.5px"
+              width={1000}
+              height={1000}
+              className="object-cover aspect-square w-full h-full object-top  rounded-tl-0 rounded-tr-[80px] rounded-br-0 rounded-bl-[80px]"
             />
             <figure className="absolute 2xl:w-89.25 2xl:h-89.25 lg:w-56 lg:h-56 md:w-44 md:h-44 w-36 h-36 lg:-bottom-20 lg:-right-20 md:-right-8 -right-16 -bottom-16">
               <Image
-                src="/desa-1.jpg"
+                src="/desa-1.webp"
                 alt="About Section Image"
-                fill
-                className="object-cover object-top rounded-tl-0 lg:rounded-tr-[80px] md:rounded-tr-[50px] rounded-br-0 lg:rounded-bl-[80px] md:rounded-bl-[50px]"
+                sizes="(max-width: 759px) 144px, (max-width: 1024px) 176px, (max-width: 1279px) 224px, 357px"
+                width={1000}
+                height={1000}
+                className="object-cover aspect-square object-top w-full h-full rounded-tl-0 lg:rounded-tr-[80px] rounded-tr-[50px] rounded-br-0 lg:rounded-bl-[80px] rounded-bl-[50px]"
               />
             </figure>
           </figure>
@@ -171,8 +179,10 @@ export default function Home() {
                 <Image
                   src={p.image}
                   alt={p.title}
-                  fill
-                  className="object-cover rounded-tl-[80px] rounded-tr-[80px] rounded-br-0 rounded-bl-0"
+                  sizes="(max-width: 759px) 128px, (max-width: 1024px) 256px, 349px"
+                  width={2000}
+                  height={1365}
+                  className="object-cover w-full h-full rounded-tl-[80px] rounded-tr-[80px] rounded-br-0 rounded-bl-0"
                 />
               </figure>
               <ScrollBtn
@@ -187,21 +197,26 @@ export default function Home() {
       </section>
       <section
         id="tradisi"
-        className="w-screen lg:h-screen 2xl:h-261.75 md:min-h-140 min-h-90 grid grid-cols-2"
+        className="w-screen lg:h-screen 2xl:h-270.75 md:min-h-140 min-h-90 grid grid-cols-2"
       >
-        <figure className="col-span-1 relative w-full h-full">
+        <figure className="col-span-1 relative w-full lg:h-screen 2xl:h-270.75 md:min-h-140 min-h-90">
           <Image
-            src={Image1}
-            alt="Penjor Galungan"
-            fill
-            className="object-cover"
+            src="/penjor.webp"
+            alt="Penjor"
+            sizes="50vw"
+            width={1365}
+            height={2000}
+            className="object-cover w-full h-full"
           />
-          <div className="overlay absolute w-full h-full bg-black opacity-35 z-0" />
+          <div className="overlay absolute w-full h-full inset-0 top-0 left-0 bg-black opacity-50 z-0" />
           <div className="z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h2 className="text-background text-center text-heading2">
               Penjor Galungan
             </h2>
-            <button className="lg:mt-3 mt-8 mx-auto bg-transparent border-2 border-background text-background w-28 h-12 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1">
+            <ScrollBtn
+              href="/tradisi#penjor"
+              className="lg:mt-3 mt-8 mx-auto bg-transparent border-2 border-background text-background w-28 h-12 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1"
+            >
               <p className="text-body">Jelajahi</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -213,22 +228,27 @@ export default function Home() {
                   d="M598.6 342.6C611.1 330.1 611.1 309.8 598.6 297.3L470.6 169.3C458.1 156.8 437.8 156.8 425.3 169.3C412.8 181.8 412.8 202.1 425.3 214.6L498.7 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L498.7 352L425.3 425.4C412.8 437.9 412.8 458.2 425.3 470.7C437.8 483.2 458.1 483.2 470.6 470.7L598.6 342.7z"
                 />
               </svg>
-            </button>
+            </ScrollBtn>
           </div>
         </figure>
-        <figure className="col-span-1 relative w-full h-full">
+        <figure className="col-span-1 relative lg:h-screen 2xl:h-270.75 md:min-h-140 min-h-90">
           <Image
-            src="/ruang-1.jpg"
+            src="/ruang-1.webp"
             alt="Tata Ruang Pura"
-            fill
-            className="object-cover"
+            sizes="50vw"
+            width={1365}
+            height={2000}
+            className="object-cover w-full h-full"
           />
-          <div className="overlay absolute w-full h-full bg-black opacity-35 z-0" />
+          <div className="overlay absolute inset-0 top-0 w-full h-full bg-black opacity-35 z-0" />
           <div className="z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h2 className="text-background text-center text-heading2">
               Tata Ruang Pura
             </h2>
-            <button className="lg:mt-3 mt-8 mx-auto bg-transparent border-2 border-background text-background w-28 h-12 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1">
+            <ScrollBtn
+              href="/tradisi#tata-ruang"
+              className="lg:mt-3 mt-8 mx-auto bg-transparent border-2 border-background text-background w-28 h-12 md:w-44 md:h-16 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 flex items-center justify-center gap-1"
+            >
               <p className="text-body">Jelajahi</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -240,27 +260,28 @@ export default function Home() {
                   d="M598.6 342.6C611.1 330.1 611.1 309.8 598.6 297.3L470.6 169.3C458.1 156.8 437.8 156.8 425.3 169.3C412.8 181.8 412.8 202.1 425.3 214.6L498.7 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L498.7 352L425.3 425.4C412.8 437.9 412.8 458.2 425.3 470.7C437.8 483.2 458.1 483.2 470.6 470.7L598.6 342.7z"
                 />
               </svg>
-            </button>
+            </ScrollBtn>
           </div>
         </figure>
       </section>
       <section
         id="alam"
-        className="w-screen lg:h-screen 2xl:h-261.75 min-h-160 px-12 gap-12 grid grid-cols-2 lg:px-12 justify-items-center items-center"
+        className="bg-background w-screen lg:h-screen 2xl:h-261.75 min-h-160 px-12 gap-12 grid grid-cols-2 lg:px-12 justify-items-center items-center"
       >
         <h2 className="mt-12 text-heading2 text-center col-span-2">
           SEKILAS PESONA ALAM KAMI
         </h2>
         <div className="col-span-2 md:col-span-1">
-          <figure className="relative grid grid-cols-3 2xl:w-156.75 2xl:h-470,25 2xl:gap-3 lg:gap-1 gap-1">
+          <figure className="relative grid grid-cols-3 2xl:gap-3 lg:gap-1 gap-1">
             {views.map((v, index) => (
               <Image
                 key={index}
                 src={v}
                 alt="Pesona Alam Desan Karang Dalem Tua"
-                width={100}
-                height={100}
-                className="object-cover 2xl:w-52 2xl:h-52 lg:w-36 lg:h-36 md:w-32 md:h-32 w-26 h-26 col-span-1 rounded-4xl"
+                sizes="(max-width: 759px) 104px, (max-width: 1024px) 128px, (max-width: 1279px) 144px, 208px"
+                width={1000}
+                height={1000}
+                className="object-cover aspect-square 2xl:w-52 2xl:h-52 lg:w-36 lg:h-36 md:w-32 md:h-32 w-26 h-26 col-span-1 rounded-xl md:rounded-4xl"
               />
             ))}
           </figure>
@@ -284,7 +305,7 @@ export default function Home() {
       <section className="w-screen lg:h-170 md:h-150 h-120 lg:px-12 2xl:px-32 md:px-12 px-5 py-12">
         <figure
           className="w-full h-full relative bg-no-repeat bg-center bg-cover bg-fixed"
-          style={{ backgroundImage: `url(/patung-3.jpg)` }}
+          style={{ backgroundImage: `url(/patung-3.webp)` }}
         >
           <div className="absolute inset-0 bg-black/40 z-0" />
           <div className="absolute w-full px-4 lg:px-32 text-background z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

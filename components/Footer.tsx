@@ -9,7 +9,7 @@ const navLinks = [
 export default function Footer() {
   return (
     <footer className="bg-primary text-background">
-      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-7xl px-8 py-12 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           {/* Kontak */}
           <div>

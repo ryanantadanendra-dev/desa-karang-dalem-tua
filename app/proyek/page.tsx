@@ -3,15 +3,51 @@ import Image from "next/image";
 import Image1 from "../../public/jalak-bali.webp";
 import ScrollToHash from "@/components/ScrollToHash";
 
-const images = {
-  left: [{ src: Image1.src }, { src: Image1.src }, { src: Image1.src }],
-  right: [{ src: Image1.src }, { src: Image1.src }],
+const jalak = {
+  left: [
+    { src: "/daur-2.webp" },
+    { src: "/jalak_bali-2.webp" },
+    { src: "/jalak_bali-3.webp" },
+  ],
+  right: [{ src: "/jalak_bali-4.webp" }, { src: "/jalak_bali-5.webp" }],
 };
 
-const images2 = {
-  left: [{ src: Image1.src }, { src: Image1.src }, { src: Image1.src }],
-  right: [{ src: Image1.src }, { src: Image1.src }],
+const daur = {
+  left: [
+    { src: "/daur-1.webp" },
+    { src: "/daur-3.webp" },
+    { src: "/daur-4.webp" },
+  ],
+  right: [{ src: "/daur-5.webp" }, { src: "/daur-6.webp" }],
 };
+
+const perak = {
+  left: [
+    { src: "/perak-6.webp" },
+    { src: "/perak-2.webp" },
+    { src: "/perak-5.webp" },
+  ],
+  right: [{ src: "/perak-4.webp" }, { src: "/perak-3.webp" }],
+};
+
+const lebah = {
+  left: [
+    { src: "/lebah-2.webp" },
+    { src: "/lebah-1.webp" },
+    { src: "/lebah-4.webp" },
+  ],
+  right: [{ src: "/lebah-5.webp" }, { src: "/lebah-3.webp" }],
+};
+
+const biogas = {
+  left: [
+    { src: "/biogas-3.webp" },
+    { src: "/biogas-2.webp" },
+    { src: "/biogas-4.webp" },
+  ],
+  right: [{ src: "/biogas-1.webp" }, { src: "/biogas-5.webp" }],
+};
+
 const ProyekPage = () => {
   return (
     <>
@@ -41,14 +77,15 @@ const ProyekPage = () => {
             <div className="grid grid-cols-2 gap-3">
               {/* Left column */}
               <div className="flex flex-col gap-3">
-                {images.left.map((img, i) => (
+                {jalak.left.map((img, i) => (
                   <Image
                     key={i}
                     src={img.src}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="w-65 h-65 rounded-md object-cover"
+                    width={1000}
+                    height={1000}
+                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
                     style={{ aspectRatio: "auto" }}
                   />
                 ))}
@@ -56,14 +93,15 @@ const ProyekPage = () => {
 
               {/* Right column */}
               <div className="flex flex-col gap-3">
-                {images.right.map((img, i) => (
+                {jalak.right.map((img, i) => (
                   <Image
                     key={i}
                     src={img.src}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="w-65 h-65 rounded-md object-cover flex-1"
+                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+                    width={1000}
+                    height={1000}
+                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
                   />
                 ))}
               </div>
@@ -78,28 +116,30 @@ const ProyekPage = () => {
             <div className="grid grid-cols-2 gap-3">
               {/* Right column */}
               <div className="flex flex-col gap-3">
-                {images2.right.map((img, i) => (
+                {daur.right.map((img, i) => (
                   <Image
                     key={i}
                     src={img.src}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="w-65 h-65 rounded-md object-cover flex-1"
+                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+                    width={1000}
+                    height={1000}
+                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
                   />
                 ))}
               </div>
 
               {/* Left column */}
               <div className="flex flex-col gap-3">
-                {images2.left.map((img, i) => (
+                {daur.left.map((img, i) => (
                   <Image
                     key={i}
                     src={img.src}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="w-65 h-65 rounded-md object-cover"
+                    width={1000}
+                    height={1000}
+                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
                     style={{ aspectRatio: "auto" }}
                   />
                 ))}
@@ -131,7 +171,7 @@ const ProyekPage = () => {
             <article className="text-body mt-6">
               Kerajinan perak telah berkembang di Karang Dalem Tua sejak tahun
               1980-an dan pernah menjadi mata pencaharian utama masyarakat, di
-              mana pada era 1990–2000 hampir seluruh warga merupakan pengrajin
+              mana pada era 1990–1000 hampir seluruh warga merupakan pengrajin
               perak. Meskipun jumlah pengrajin kini berkurang akibat perubahan
               global, tradisi kerajinan ini tetap dilestarikan sebagai identitas
               desa.
@@ -148,14 +188,15 @@ const ProyekPage = () => {
             <div className="grid grid-cols-2 gap-3">
               {/* Left column */}
               <div className="flex flex-col gap-3">
-                {images.left.map((img, i) => (
+                {perak.left.map((img, i) => (
                   <Image
                     key={i}
                     src={img.src}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="w-65 h-65 rounded-md object-cover"
+                    width={1000}
+                    height={1000}
+                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
                     style={{ aspectRatio: "auto" }}
                   />
                 ))}
@@ -163,14 +204,15 @@ const ProyekPage = () => {
 
               {/* Right column */}
               <div className="flex flex-col gap-3">
-                {images.right.map((img, i) => (
+                {perak.right.map((img, i) => (
                   <Image
                     key={i}
                     src={img.src}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="w-65 h-65 rounded-md object-cover flex-1"
+                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+                    width={1000}
+                    height={1000}
+                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
                   />
                 ))}
               </div>
@@ -185,28 +227,30 @@ const ProyekPage = () => {
             <div className="grid grid-cols-2 gap-3">
               {/* Right column */}
               <div className="flex flex-col gap-3">
-                {images2.right.map((img, i) => (
+                {lebah.right.map((img, i) => (
                   <Image
                     key={i}
                     src={img.src}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="w-65 h-65 rounded-md object-cover flex-1"
+                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+                    width={1000}
+                    height={1000}
+                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
                   />
                 ))}
               </div>
 
               {/* Left column */}
               <div className="flex flex-col gap-3">
-                {images2.left.map((img, i) => (
+                {lebah.left.map((img, i) => (
                   <Image
                     key={i}
                     src={img.src}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="w-65 h-65 rounded-md object-cover"
+                    width={1000}
+                    height={1000}
+                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
                     style={{ aspectRatio: "auto" }}
                   />
                 ))}
@@ -253,14 +297,15 @@ const ProyekPage = () => {
             <div className="grid grid-cols-2 gap-3">
               {/* Left column */}
               <div className="flex flex-col gap-3">
-                {images.left.map((img, i) => (
+                {biogas.left.map((img, i) => (
                   <Image
                     key={i}
                     src={img.src}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="w-65 h-65 rounded-md object-cover"
+                    width={1000}
+                    height={1000}
+                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
                     style={{ aspectRatio: "auto" }}
                   />
                 ))}
@@ -268,14 +313,15 @@ const ProyekPage = () => {
 
               {/* Right column */}
               <div className="flex flex-col gap-3">
-                {images.right.map((img, i) => (
+                {biogas.right.map((img, i) => (
                   <Image
                     key={i}
                     src={img.src}
                     alt=""
-                    width={100}
-                    height={100}
-                    className="w-65 h-65 rounded-md object-cover flex-1"
+                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+                    width={1000}
+                    height={1333}
+                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
                   />
                 ))}
               </div>

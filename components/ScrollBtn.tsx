@@ -44,8 +44,16 @@ export default function ScrollBtn({
   };
 
   return (
-    <a href={href} onClick={handleClick} className={className}>
+    <a
+      href={href}
+      onClick={handleClick}
+      className={`group relative ${className}`}
+    >
       {children}
+      <span
+        className="absolute inset-0 scale-0 rounded-tl-[28px] rounded-tr-0 rounded-br-[28px] rounded-bl-0 bg-background/20 transition-transform duration-200 ease-out group-hover:scale-[1]"
+        style={{ transformOrigin: "center" }}
+      />
     </a>
   );
 }
