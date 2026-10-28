@@ -1,0 +1,40 @@
+import type { Metadata } from "next";
+import {
+  Geist,
+  Geist_Mono,
+  Cormorant_Garamond,
+  Plus_Jakarta_Sans,
+} from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
+  subsets: ["latin"],
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Desa Karang Dalem Tua",
+  description: "Desa Karang Dalem Tua",
+};
+
+export default function RootLayout({ children }: LayoutProps<"/">) {
+  return (
+    <html
+      lang="en"
+      className={`${cormorantGaramond.variable} ${plusJakartaSans.variable} overflow-x-hidden h-full antialiased scroll-smooth`}
+    >
+      <body className="">
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}
