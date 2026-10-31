@@ -2,6 +2,45 @@ import Header from "@/components/Header";
 import Image from "next/image";
 import Image1 from "../../public/jalak-bali.webp";
 import ScrollToHash from "@/components/ScrollToHash";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tradisi & Budaya",
+  description:
+    "Jelajahi tradisi, upacara adat, seni, dan kearifan lokal masyarakat Desa Karang Dalem Tua, Bali yang terus dilestarikan lintas generasi.",
+  keywords: [
+    "tradisi Bali",
+    "budaya Desa Karang Dalem Tua",
+    "upacara adat Bali",
+    "kearifan lokal Bali",
+    "seni dan budaya Bali",
+    "wisata budaya Bali",
+  ],
+  alternates: { canonical: "/tradisi" },
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    siteName: "Desa Karang Dalem Tua",
+    title: "Tradisi & Budaya | Desa Karang Dalem Tua",
+    description:
+      "Tradisi, upacara adat, dan kearifan lokal masyarakat Desa Karang Dalem Tua, Bali.",
+    url: "/tradisi",
+    images: [
+      {
+        url: "/penjor.webp",
+        width: 1200,
+        height: 630,
+        alt: "Tradisi Desa Karang Dalem Tua",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tradisi & Budaya | Desa Karang Dalem Tua",
+    description: "Tradisi dan kearifan lokal Desa Karang Dalem Tua, Bali.",
+    images: ["/penjor.webp"],
+  },
+};
 
 const TradisiPage = () => {
   return (

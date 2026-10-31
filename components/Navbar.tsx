@@ -11,13 +11,13 @@ const links: NavLink[] = [
   { label: "Tentang", href: "/tentang-kami" },
   {
     label: "Proyek",
-    href: "/proyek",
+    href: "/program",
     submenu: [
-      { label: "Jalak Bali", href: "/proyek#jalak-bali" },
-      { label: "Kerajinan Daur Ulang", href: "/proyek#daur-ulang" },
-      { label: "Kerajinan Perak", href: "/proyek#perak" },
-      { label: "Budiidaya Lebah Madu", href: "/proyek#lebah-madu" },
-      { label: "Biogas", href: "/proyek#biogas" },
+      { label: "Jalak Bali", href: "/program#jalak-bali" },
+      { label: "Kerajinan Daur Ulang", href: "/program#daur-ulang" },
+      { label: "Kerajinan Perak", href: "/program#perak" },
+      { label: "Budiidaya Lebah Madu", href: "/program#lebah-madu" },
+      { label: "Biogas", href: "/program#biogas" },
     ],
   },
   {
@@ -27,6 +27,10 @@ const links: NavLink[] = [
       { label: "Penjor", href: "/tradisi#penjor" },
       { label: "Tata Ruang Pura Dua", href: "/tradisi#tata-ruang" },
     ],
+  },
+  {
+    label: "Blog",
+    href: "/blog",
   },
 ];
 

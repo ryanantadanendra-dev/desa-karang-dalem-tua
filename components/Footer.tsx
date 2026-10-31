@@ -1,12 +1,20 @@
 "use client";
 
+import { useSocial } from "@/hooks/social";
+
 const navLinks = [
   { label: "Tentang", href: "/tentang-kami" },
   { label: "Proyek", href: "/proyek" },
   { label: "Tradisi", href: "/tradisi" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Footer() {
+  const { socials } = useSocial();
+  const instagram = socials?.data.find((s) => s.platform == "Instagram");
+  const whatsapp = socials?.data.find((s) => s.platform == "Whatsapp");
+  const email = socials?.data.find((s) => s.platform == "Email");
+
   return (
     <footer className="bg-primary text-background">
       <div className="mx-auto max-w-7xl px-8 py-12 sm:px-8 lg:px-12">
@@ -38,10 +46,10 @@ export default function Footer() {
                   />
                 </svg>
                 <a
-                  href="mailto:contoh@gmail.com"
+                  href={email?.link}
                   className="transition-colors hover:text-accent"
                 >
-                  contoh@gmail.com
+                  {email?.text}
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -60,11 +68,11 @@ export default function Footer() {
                   />
                 </svg>
                 <a
-                  href="tel:+62123456789"
+                  href={whatsapp?.link}
                   className="transition-colors
                 hover:text-accent"
                 >
-                  +62123456789
+                  {whatsapp?.text}
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -81,12 +89,12 @@ export default function Footer() {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                 </svg>
                 <a
-                  href="https://instagram.com"
+                  href={instagram?.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-accent"
                 >
-                  @instagram
+                  {instagram?.text}
                 </a>
               </li>
             </ul>
@@ -120,7 +128,7 @@ export default function Footer() {
               {" "}
               <iframe
                 title="Lokasi Desa"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253680.0!2d106.75!3d-6.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTInMDAuMCJTIDEwNsKwNDUnMDAuMCJF!5e0!3m2!1sen!2sid!4v0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4342.902006710502!2d115.23335793813393!3d-8.461203550866161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd223004bd2648d%3A0x250a19d2e163a1f0!2sKarang%20Dalem%20Tua!5e0!3m2!1sen!2sid!4v1793287870141!5m2!1sen!2sid"
                 width="100%"
                 height="180"
                 style={{ border: 0 }}

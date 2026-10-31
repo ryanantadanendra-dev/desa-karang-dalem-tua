@@ -2,6 +2,47 @@ import Header from "@/components/Header";
 import Image from "next/image";
 import Image1 from "../../public/jalak-bali.webp";
 import ScrollToHash from "@/components/ScrollToHash";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Program Desa",
+  description:
+    "Program unggulan Desa Karang Dalem Tua: pengkaderan Jalak Bali, budidaya lebah madu, biogas, kerajinan daur ulang, dan kerajinan perak.",
+  keywords: [
+    "program desa Bali",
+    "pengkaderan Jalak Bali",
+    "budidaya lebah madu",
+    "biogas desa",
+    "kerajinan daur ulang",
+    "kerajinan perak",
+    "desa mandiri berkelanjutan",
+  ],
+  alternates: { canonical: "/program" },
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    siteName: "Desa Karang Dalem Tua",
+    title: "Program Desa | Desa Karang Dalem Tua",
+    description:
+      "Lima program unggulan desa untuk pelestarian alam, energi terbarukan, dan ekonomi kreatif masyarakat.",
+    url: "/program",
+    images: [
+      {
+        url: "/jalak_bali-1.webp",
+        width: 1200,
+        height: 630,
+        alt: "Program Desa Karang Dalem Tua",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Program Desa | Desa Karang Dalem Tua",
+    description:
+      "Jalak Bali, lebah madu, biogas, daur ulang, dan kerajinan perak.",
+    images: ["/jalak_bali-1.webp"],
+  },
+};
 
 const jalak = {
   left: [

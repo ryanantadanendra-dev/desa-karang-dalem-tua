@@ -5,7 +5,7 @@ import {
   Cormorant_Garamond,
   Plus_Jakarta_Sans,
 } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 

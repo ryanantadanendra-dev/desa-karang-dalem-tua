@@ -1,6 +1,42 @@
 import Header from "@/components/Header";
 import Image from "next/image";
 import Image1 from "../../public/jalak-bali.webp";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tentang Kami",
+  description:
+    "Kenali Desa Karang Dalem Tua, Bali: sejarah, profil wilayah, visi dan misi, serta masyarakat yang menjaga alam, budaya, dan ekonomi kreatif desa.",
+  keywords: [
+    "profil Desa Karang Dalem Tua",
+    "sejarah desa",
+    "visi misi desa",
+    "pemerintah desa Bali",
+  ],
+  alternates: { canonical: "/tentang-kami" },
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    siteName: "Desa Karang Dalem Tua",
+    title: "Tentang Kami | Desa Karang Dalem Tua",
+    description: "Profil, sejarah, dan visi misi Desa Karang Dalem Tua, Bali.",
+    url: "/tentang-kami",
+    images: [
+      {
+        url: "/desa-1.webp",
+        width: 1200,
+        height: 630,
+        alt: "Tentang Desa Karang Dalem Tua",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tentang Kami | Desa Karang Dalem Tua",
+    description: "Profil, sejarah, dan visi misi Desa Karang Dalem Tua, Bali.",
+    images: ["/desa-1.webp"],
+  },
+};
 
 const AboutPage = () => {
   return (
