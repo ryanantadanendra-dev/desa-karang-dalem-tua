@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useSocial } from "@/hooks/social";
-import { ValidationErrors } from "@/types/auth";
 import { Social } from "@/types/social";
+import { FormErrors } from "@/types/validation";
 
 type Props = {
   social: Social | null; // null = tambah baru, ada isi = edit
@@ -19,7 +19,7 @@ export default function SocialFormModal({ social, onClose }: Props) {
   const [platform, setPlatform] = useState(social?.platform ?? "");
   const [link, setLink] = useState(social?.link ?? "");
   const [text, setText] = useState(social?.text ?? "");
-  const [errors, setErrors] = useState<ValidationErrors>({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (e: React.FormEvent) => {

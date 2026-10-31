@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useBlog } from "@/hooks/blog";
-import { ValidationErrors } from "@/types/auth";
 import { Blog } from "@/types/blog";
+import { FormErrors } from "@/types/validation";
 
 type Props = {
   blog: Blog | null; // null = tambah baru, ada isi = edit
@@ -20,7 +20,7 @@ export default function BlogFormModal({ blog, onClose }: Props) {
   const [subtitle, setSubtitle] = useState(blog?.subtitle ?? "");
   const [content, setContent] = useState(blog?.content ?? "");
   const [image, setImage] = useState<File | null>(null);
-  const [errors, setErrors] = useState<ValidationErrors>({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (e: React.FormEvent) => {

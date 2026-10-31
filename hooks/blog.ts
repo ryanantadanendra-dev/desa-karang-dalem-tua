@@ -1,12 +1,12 @@
 import useSWR, { useSWRConfig } from "swr";
 import axios from "@/lib/axios";
 import { Dispatch, SetStateAction } from "react";
-import { ValidationErrors } from "@/types/auth";
 import { Blog, BlogForm } from "@/types/blog";
 import { ListParams, Paginated } from "@/types/pagination";
+import { FormErrors } from "@/types/validation";
 
 type ActionProp<T> = T & {
-  setErrors: Dispatch<SetStateAction<ValidationErrors>>;
+  setErrors: Dispatch<SetStateAction<FormErrors>>;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
 };
 
