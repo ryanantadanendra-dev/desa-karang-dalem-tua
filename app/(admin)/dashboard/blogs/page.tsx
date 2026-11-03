@@ -5,6 +5,8 @@ import Pagination from "@/components/Pagination";
 import BlogFormModal from "@/components/BlogFormModal";
 import { useBlog } from "@/hooks/blog";
 import { Blog } from "@/types/blog";
+import ConfirmModal from "@/components/ConfirmModal";
+import SuccessModal from "@/components/SuccessModal";
 
 const dateFormat = new Intl.DateTimeFormat("id-ID", {
   day: "2-digit",
@@ -19,6 +21,10 @@ export default function BlogDashboard() {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<Blog | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [toDelete, setToDelete] = useState<Blog | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const { blogs, error, isLoading, deleteBlog } = useBlog({
     page,
@@ -45,16 +51,38 @@ export default function BlogDashboard() {
     setShowForm(true);
   };
 
-  const onDelete = async (blog: Blog) => {
-    if (!confirm(`Hapus blog "${blog.title}"?`)) return;
+  const closeDelete = () => {
+    if (isDeleting) return;
+    setToDelete(null);
+    setDeleteError(null);
+  };
 
-    setDeletingId(blog.id);
+  const onDelete = async () => {
+    // if (!confirm(`Hapus blog "${blog.title}"?`)) return;
+
+    // setDeletingId(blog.id);
+    // try {
+    //   await deleteBlog(blog.id);
+    //   // Kalau yang dihapus data terakhir di halaman ini, mundur satu halaman
+    //   if (blogs && blogs.data.length === 1 && page > 1) setPage(page - 1);
+    // } finally {
+    //   setDeletingId(null);
+    // }
+
+    if (!toDelete) return;
+
+    setIsDeleting(true);
+    setDeleteError(null);
     try {
-      await deleteBlog(blog.id);
+      await deleteBlog(toDelete.id);
       // Kalau yang dihapus data terakhir di halaman ini, mundur satu halaman
       if (blogs && blogs.data.length === 1 && page > 1) setPage(page - 1);
+      setToDelete(null);
+      setSuccessMessage("Blog Berhasil Dihapus!");
+    } catch {
+      setDeleteError("Gagal menghapus data. Silakan coba lagi.");
     } finally {
-      setDeletingId(null);
+      setIsDeleting(false);
     }
   };
 
@@ -168,11 +196,10 @@ export default function BlogDashboard() {
                         Edit
                       </button>
                       <button
-                        onClick={() => onDelete(blog)}
-                        disabled={deletingId === blog.id}
-                        className="rounded-lg px-3 py-1.5 text-rose-600 hover:bg-rose-50 disabled:opacity-50"
+                        onClick={() => setToDelete(blog)}
+                        className="rounded-lg px-3 py-1.5 text-rose-600 hover:bg-rose-50"
                       >
-                        {deletingId === blog.id ? "Menghapus..." : "Hapus"}
+                        Hapus
                       </button>
                     </td>
                   </tr>
@@ -195,8 +222,34 @@ export default function BlogDashboard() {
       </div>
 
       {showForm && (
-        <BlogFormModal blog={editing} onClose={() => setShowForm(false)} />
+        <BlogFormModal
+          blog={editing}
+          onClose={() => setShowForm(false)}
+          onSuccess={setSuccessMessage}
+        />
       )}
+
+      <ConfirmModal
+        open={!!toDelete}
+        title="Hapus blog?"
+        message={
+          <>
+            <span className="font-medium text-slate-700">
+              &ldquo;{toDelete?.title}&rdquo;
+            </span>{" "}
+            akan dihapus permanen dan tidak bisa dikembalikan.
+          </>
+        }
+        loading={isDeleting}
+        error={deleteError}
+        onConfirm={onDelete}
+        onCancel={closeDelete}
+      />
+      <SuccessModal
+        open={!!successMessage}
+        message={successMessage}
+        onClose={() => setSuccessMessage(null)}
+      />
     </main>
   );
 }

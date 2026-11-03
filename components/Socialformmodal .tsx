@@ -8,12 +8,13 @@ import { FormErrors } from "@/types/validation";
 type Props = {
   social: Social | null; // null = tambah baru, ada isi = edit
   onClose: () => void;
+  onSuccess?: (message: string) => void;
 };
 
 const input =
   "mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none focus:border-[#4C5BD4] focus:ring-2 focus:ring-[#4C5BD4]/20";
 
-export default function SocialFormModal({ social, onClose }: Props) {
+export default function SocialFormModal({ social, onClose, onSuccess }: Props) {
   const { createSocial, updateSocial } = useSocial();
 
   const [platform, setPlatform] = useState(social?.platform ?? "");
@@ -36,7 +37,14 @@ export default function SocialFormModal({ social, onClose }: Props) {
         })
       : await createSocial({ platform, link, text, setErrors, setIsLoading });
 
-    if (ok) onClose();
+    if (ok) {
+      onSuccess?.(
+        social
+          ? "Social media berhasil diperbarui."
+          : "Social media berhasil ditambahkan.",
+      );
+      onClose();
+    }
   };
 
   const err = (field: string) =>

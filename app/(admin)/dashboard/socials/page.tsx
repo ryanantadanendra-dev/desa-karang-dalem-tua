@@ -5,6 +5,7 @@ import Pagination from "@/components/Pagination";
 import SocialFormModal from "@/components/Socialformmodal ";
 import { useSocial } from "@/hooks/social";
 import { Social } from "@/types/social";
+import SuccessModal from "@/components/SuccessModal";
 
 export default function SocialDashboard() {
   const [page, setPage] = useState(1);
@@ -13,6 +14,7 @@ export default function SocialDashboard() {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<Social | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const { socials, error, isLoading, deleteSocial } = useSocial({
     page,
@@ -166,8 +168,18 @@ export default function SocialDashboard() {
       </div>
 
       {showForm && (
-        <SocialFormModal social={editing} onClose={() => setShowForm(false)} />
+        <SocialFormModal
+          social={editing}
+          onClose={() => setShowForm(false)}
+          onSuccess={setSuccessMessage}
+        />
       )}
+
+      <SuccessModal
+        open={!!successMessage}
+        message={successMessage}
+        onClose={() => setSuccessMessage(null)}
+      />
     </main>
   );
 }

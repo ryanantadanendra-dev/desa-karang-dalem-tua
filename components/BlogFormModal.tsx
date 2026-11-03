@@ -8,12 +8,13 @@ import { FormErrors } from "@/types/validation";
 type Props = {
   blog: Blog | null; // null = tambah baru, ada isi = edit
   onClose: () => void;
+  onSuccess?: (message: string) => void;
 };
 
 const input =
   "mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm outline-none focus:border-[#4C5BD4] focus:ring-2 focus:ring-[#4C5BD4]/20";
 
-export default function BlogFormModal({ blog, onClose }: Props) {
+export default function BlogFormModal({ blog, onClose, onSuccess }: Props) {
   const { createBlog, updateBlog } = useBlog();
 
   const [title, setTitle] = useState(blog?.title ?? "");
@@ -45,7 +46,12 @@ export default function BlogFormModal({ blog, onClose }: Props) {
           setIsLoading,
         });
 
-    if (ok) onClose();
+    if (ok) {
+      onSuccess?.(
+        blog ? "Blog berhasil diperbarui." : "Blog berhasil ditambahkan.",
+      );
+      onClose();
+    }
   };
 
   const err = (field: string) =>
