@@ -79,6 +79,17 @@ export const useAuth = ({
     window.location.pathname = "/login";
   };
 
+  const isLoading = user === undefined && !error;
+
+  useEffect(() => {
+    if (middleware === "guest" && redirectIfAuthenticated && user)
+      router.push(redirectIfAuthenticated);
+
+    if (middleware === "auth" && user === null) router.replace("/login"); // new
+
+    if (middleware === "auth" && error) logout();
+  }, [user, error, middleware, redirectIfAuthenticated]);
+
   useEffect(() => {
     if (middleware === "guest" && redirectIfAuthenticated && user)
       router.push(redirectIfAuthenticated);

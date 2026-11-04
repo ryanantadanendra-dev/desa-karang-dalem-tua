@@ -68,6 +68,18 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   const { user, logout } = useAuth({ middleware: "auth" });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  if (!user) {
+    return (
+      <html lang="en" className="w-full h-full overflow-x-hidden">
+        <body>
+          <div className="flex min-h-screen items-center justify-center bg-[#EEF1F6] text-sm text-slate-500">
+            Checking your session...
+          </div>
+        </body>
+      </html>
+    );
+  }
+
   return (
     <html lang="en" className="w-full h-full overflow-x-hidden">
       <body>
