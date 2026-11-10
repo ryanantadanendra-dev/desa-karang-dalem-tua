@@ -68,13 +68,14 @@ export default function BlogDetail({ slug }: { slug: string }) {
         {blog?.image && (
           <div className="relative aspect-video w-full bg-slate-100">
             <Image
-              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${blog?.image}`}
+              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/${blog.image}`}
               alt={blog.title}
-              unoptimized
               fill
-              sizes="(min-width: 768px) 768px, 100vw"
+              sizes="(min-width: 1024px) 1200px, 100vw"
+              quality={100}
               className="object-cover"
               priority
+              unoptimized
             />
           </div>
         )}

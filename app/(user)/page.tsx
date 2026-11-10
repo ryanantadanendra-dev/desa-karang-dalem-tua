@@ -4,6 +4,7 @@ import Link from "next/link";
 import ScrollBtn from "@/components/ScrollBtn";
 import Divider from "@/components/Divider";
 import type { Metadata, Viewport } from "next";
+import LatestBlogs from "@/components/LatestBlogs";
 
 const siteUrl = "https://www.karangdalemtua.org";
 
@@ -398,6 +399,7 @@ export default function Home() {
           </article>
         </div>
       </section>
+      <LatestBlogs />
       <section className="w-screen lg:h-170 md:h-150 h-120 lg:px-12 2xl:px-32 md:px-12 px-5 py-12">
         <Divider />
       </section>

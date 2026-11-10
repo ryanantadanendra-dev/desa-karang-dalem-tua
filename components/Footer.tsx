@@ -4,7 +4,7 @@ import { useSocial } from "@/hooks/social";
 
 const navLinks = [
   { label: "Tentang", href: "/tentang-kami" },
-  { label: "Proyek", href: "/proyek" },
+  { label: "Program", href: "/program" },
   { label: "Tradisi", href: "/tradisi" },
   { label: "Blog", href: "/blog" },
 ];

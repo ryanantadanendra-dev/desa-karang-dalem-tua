@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ScrollBtn from "./ScrollBtn";
 import Link from "next/link";
+import Image from "next/image";
 
 type SubLink = { label: string; href: string };
 type NavLink = { label: string; href: string; submenu?: SubLink[] };
@@ -10,7 +11,7 @@ type NavLink = { label: string; href: string; submenu?: SubLink[] };
 const links: NavLink[] = [
   { label: "Tentang", href: "/tentang-kami" },
   {
-    label: "Proyek",
+    label: "Program",
     href: "/program",
     submenu: [
       { label: "Jalak Bali", href: "/program#jalak-bali" },
@@ -46,7 +47,12 @@ export default function Navbar() {
           href="/"
           className="font-cormorant text-sm font-semibold tracking-[0.3em] uppercase"
         >
-          Home
+          <Image
+            src="/logo.png"
+            alt="Karang Dalem Tua Logo"
+            width={40}
+            height={40}
+          />
         </a>
 
         {/* Desktop nav */}

@@ -3,6 +3,8 @@ import Image from "next/image";
 import Image1 from "../../public/jalak-bali.webp";
 import ScrollToHash from "@/components/ScrollToHash";
 import type { Metadata } from "next";
+import { tradition } from "@/types/tradition";
+import { Paginated } from "@/types/pagination";
 
 export const metadata: Metadata = {
   title: "Tradisi & Budaya",
@@ -42,66 +44,133 @@ export const metadata: Metadata = {
   },
 };
 
-const TradisiPage = () => {
+const sections = [
+  { id: "penjor", image: "/penjor.webp", alt: "Penjor Bali", imageFirst: true },
+  {
+    id: "tata-ruang",
+    image: "/ruang-2.webp",
+    alt: "Tata Ruang Pura",
+    imageFirst: false,
+  },
+];
+
+async function getTradisi(): Promise<tradition[]> {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/tradisi?per_page=2`,
+      {
+        headers: { Accept: "application/json" },
+        next: { revalidate: 60 }, // data di-cache 60 detik; ganti ke cache: "no-store" jika harus selalu terbaru
+      },
+    );
+
+    if (!res.ok) return [];
+
+    const json = (await res.json()) as Paginated<tradition>;
+
+    // API mengurutkan dari yang terbaru. Urutkan naik berdasarkan id supaya
+    // data yang dibuat lebih dulu (penjor) tampil di section pertama.
+    return [...json.data].sort((a, b) => a.id - b.id);
+  } catch {
+    return [];
+  }
+}
+
+// Pisahkan isi menjadi paragraf berdasarkan baris kosong
+const Paragraphs = ({ text }: { text: string }) => (
+  <>
+    {text
+      .split(/\n\s*\n/)
+      .filter((p) => p.trim() !== "")
+      .map((p, i) => (
+        <p key={i} className="whitespace-pre-line">
+          {p.trim()}
+        </p>
+      ))}
+  </>
+);
+
+type SectionProps = {
+  id: string;
+  image: string;
+  alt: string;
+  imageFirst: boolean;
+  title: string;
+  content: string;
+};
+
+const TradisiSection = ({
+  id,
+  image,
+  alt,
+  imageFirst,
+  title,
+  content,
+}: SectionProps) => (
+  <section
+    id={id}
+    className="2xl:min-h-screen lg:min-h-100 min-h-120 py-12 px-8 md:px-12 grid md:grid-cols-2 grid-cols-1 grid-flow-row justify-items-center items-start lg:items-center gap-12 md:gap-8 lg:gap-0"
+  >
+    <div
+      className={`order-2 col-span-1 ${imageFirst ? "md:order-1" : "md:order-2"}`}
+    >
+      <figure className="relative 2xl:w-132.25 2xl:h-154.75 lg:w-90 lg:h-110 md:w-60 md:h-80 w-44 h-56">
+        <Image
+          src={image}
+          alt={alt}
+          width={2000}
+          height={1365}
+          sizes="(max-width: 759px) 176px, (max-width: 1024px) 240px, (max-width: 1279px) 360px, 529px"
+          className="object-cover w-full h-full rounded-2xl"
+        />
+      </figure>
+    </div>
+    <div
+      className={`order-1 col-span-1 ${
+        imageFirst
+          ? "md:order-2 2xl:pe-32 lg:pe-10"
+          : "md:order-1 2xl:ps-32 lg:ps-10"
+      }`}
+    >
+      <h2 className="text-heading2">{title}</h2>
+      <article className="text-body md:mt-8 space-y-4">
+        <Paragraphs text={content} />
+      </article>
+    </div>
+  </section>
+);
+
+const TradisiPage = async () => {
+  const tradisi = await getTradisi();
+
   return (
     <>
       <Header text="TRADISI" />
       <main className="w-screen min-h-screen md:min-h-200 lg:min-h-screen">
         <ScrollToHash />
-        <section
-          id="penjor"
-          className="2xl:min-h-screen lg:min-h-100 min-h-120 py-12 px-8 md:px-12 grid md:grid-cols-2 grid-cols-1 grid-flow-row justify-items-center items-start lg:items-center gap-12 md:gap-8 lg:gap-0"
-        >
-          <div className="order-2 md:order-1 col-span-1">
-            <figure className="relative 2xl:w-132.25 2xl:h-154.75 lg:w-90 lg:h-110 md:w-60 md:h-80 w-44 h-56">
-              <Image
-                src="/penjor.webp"
-                alt="Penjor Bali"
-                width={2000}
-                height={1365}
-                sizes="(max-width: 759px) 176px, (max-width: 1024px) 240px, (max-width: 1279px) 360px, 529px"
-                className="object-cover w-full h-full rounded-2xl"
-              />
-            </figure>
-          </div>
-          <div className="order-1 md:order-2 col-span-1 2xl:pe-32 lg:pe-10">
-            <h2 className="text-heading2">TRADISI PENJOR KARANG DALEM TUA</h2>
-            <article className="text-body md:mt-8">
-              Penjor Galungan adalah wujud syukur atas kemakmuran dan simbol
-              keharmonisan manusia dengan alam semesta. Di Karang Dalem Tua,
-              pembuatan penjor dilakukan secara serentak oleh krama desa setelah
-              menerima tirta suci, memperkuat kesatuan spiritual dan nilai
-              kebersamaan adat.
-            </article>
-          </div>
-        </section>
-        <section
-          id="tata-ruang"
-          className="2xl:min-h-screen lg:min-h-100 min-h-120 py-12 px-8 md:px-12 grid md:grid-cols-2 grid-cols-1 grid-flow-row justify-items-center items-start lg:items-center gap-12 md:gap-8 lg:gap-0"
-        >
-          <div className="order-2 md:order-2 col-span-1">
-            <figure className="relative 2xl:w-132.25 2xl:h-154.75 lg:w-90 lg:h-110 md:w-60 md:h-80 w-44 h-56">
-              <Image
-                src="/ruang-2.webp"
-                alt="Tata Ruang Pura"
-                width={2000}
-                height={1365}
-                sizes="(max-width: 759px) 176px, (max-width: 1024px) 240px, (max-width: 1279px) 360px, 529px"
-                className="object-cover w-full h-full rounded-2xl"
-              />
-            </figure>
-          </div>
-          <div className="order-1 md:order-1 col-span-1 2xl:ps-32 lg:ps-10">
-            <h2 className="text-heading2">TRADISI TATA RUANG PURA</h2>
-            <article className="text-body md:mt-8">
-              Bagi masyarakat Karang Dalem Tua, tradisi adalah fondasi hidup
-              yang diwujudkan melalui filosofi Tri Hita Karana demi menjaga
-              keharmonisan sesama, alam, dan Tuhan. Tatanan desa ini
-              berlandaskan konsep Tri Mandala, mencerminkan kesadaran spiritual
-              dan tata ruang sakral yang selaras dengan kosmos Bali.
-            </article>
-          </div>
-        </section>
+
+        {tradisi.length === 0 && (
+          <p className="py-24 text-center text-body">
+            Data tradisi belum tersedia.
+          </p>
+        )}
+
+        {sections.map((section, i) => {
+          const item = tradisi[i];
+          if (!item) return null;
+
+          return (
+            <TradisiSection
+              key={item.id}
+              id={section.id}
+              image={section.image}
+              alt={section.alt}
+              imageFirst={section.imageFirst}
+              title={item.title}
+              content={item.content}
+            />
+          );
+        })}
       </main>
     </>
   );
