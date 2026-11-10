@@ -4,14 +4,14 @@ import Link from "next/link";
 import BlogCard, { BlogCardSkeleton } from "@/components/BlogCard";
 import { useBlog } from "@/hooks/blog";
 
-const TOTAL = 3; // jumlah blog terbaru yang ditampilkan
+const TOTAL = 4; // jumlah blog terbaru yang ditampilkan
 
 export default function LatestBlogs() {
   // API mengurutkan dari yang terbaru (latest()), jadi perPage: 3 = 3 blog terbaru
   const { blogs, error, isLoading } = useBlog({ page: 1, perPage: TOTAL });
 
   return (
-    <section className="mx-auto w-[100dvw] px-4 py-12 md:px-8 md:py-16">
+    <section className="mx-auto w-[100dvw] px-0 py-12 md:px-0 md:py-12">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="md:ps-4 lg:ps-24">
           <h2 className="mt-1 font-semibold tracking-tight text-[#1B2433] text-heading2">
@@ -30,8 +30,8 @@ export default function LatestBlogs() {
         </Link>
       </div>
 
-      <div className="flex justify-center">
-        <div className="mt-20 grid grid-cols-1 gap-20 md:grid-cols-2 lg:grid-cols-3">
+      <div className="flex justify-center w-[100dvw]">
+        <div className="mt-20 grid grid-cols-2 gap-4 md:gap-20 md:grid-cols-2 lg:grid-cols-4">
           {isLoading &&
             Array.from({ length: TOTAL }).map((_, i) => (
               <BlogCardSkeleton key={i} />
