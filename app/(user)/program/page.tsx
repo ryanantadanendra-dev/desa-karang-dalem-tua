@@ -3,6 +3,8 @@ import Image from "next/image";
 import Image1 from "../../public/jalak-bali.webp";
 import ScrollToHash from "@/components/ScrollToHash";
 import type { Metadata } from "next";
+import { Program } from "@/types/program";
+import { Paginated } from "@/types/pagination";
 
 export const metadata: Metadata = {
   title: "Program Desa",
@@ -89,286 +91,186 @@ const biogas = {
   right: [{ src: "/biogas-1.webp" }, { src: "/biogas-5.webp" }],
 };
 
-const ProyekPage = () => {
+/* ------------------------------------------------------------------
+ * DATA GAMBAR: jalak, daur, perak, lebah, biogas
+ * Tetap di sini, persis seperti yang sudah ada di file Anda (tidak diubah).
+ * Bentuknya: { left: { src: string }[], right: { src: string }[] }
+ * ------------------------------------------------------------------ */
+
+type Img = { src: string };
+type ImageSet = { left: Img[]; right: Img[] };
+
+// Urutan section = urutan data di database (dibuat dari yang paling awal).
+const sections: { id: string; images: ImageSet; reverse: boolean }[] = [
+  { id: "jalak-bali", images: jalak, reverse: false },
+  { id: "daur-ulang", images: daur, reverse: true },
+  { id: "perak", images: perak, reverse: false },
+  { id: "lebah-madu", images: lebah, reverse: true },
+  { id: "biogas", images: biogas, reverse: false },
+];
+
+async function getPrograms(): Promise<Program[]> {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/programs?per_page=${sections.length}`,
+      {
+        headers: { Accept: "application/json" },
+        next: { revalidate: 60 }, // di-cache 60 detik; ganti ke cache: "no-store" jika harus selalu terbaru
+      },
+    );
+
+    if (!res.ok) return [];
+
+    const json = (await res.json()) as Paginated<Program>;
+
+    // API mengurutkan dari yang terbaru. Urutkan naik berdasarkan id supaya
+    // data yang dibuat paling awal tampil di section pertama.
+    return [...json.data].sort((a, b) => a.id - b.id);
+  } catch {
+    return [];
+  }
+}
+
+// Baris kosong di deskripsi = paragraf baru (pengganti <br /><br />)
+const Paragraphs = ({ text }: { text: string }) => (
+  <>
+    {text
+      .split(/\n\s*\n/)
+      .filter((p) => p.trim() !== "")
+      .map((p, i) => (
+        <p key={i} className="whitespace-pre-line">
+          {p.trim()}
+        </p>
+      ))}
+  </>
+);
+
+// Satu kolom gambar. "left" dan "right" punya sedikit perbedaan kelas seperti kode asli.
+const ImageColumn = ({
+  images,
+  variant,
+}: {
+  images: Img[];
+  variant: "left" | "right";
+}) => (
+  <div className="flex flex-col gap-3">
+    {images.map((img, i) =>
+      variant === "left" ? (
+        <Image
+          key={i}
+          src={img.src}
+          alt=""
+          width={1000}
+          height={1000}
+          sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+          className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
+          style={{ aspectRatio: "auto" }}
+        />
+      ) : (
+        <Image
+          key={i}
+          src={img.src}
+          alt=""
+          width={1000}
+          height={1000}
+          sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
+          className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
+        />
+      ),
+    )}
+  </div>
+);
+
+type SectionProps = {
+  id: string;
+  images: ImageSet;
+  reverse: boolean; // true = latar primary, gambar di kiri (desktop)
+  title: string;
+  content: string;
+};
+
+const ProyekSection = ({
+  id,
+  images,
+  reverse,
+  title,
+  content,
+}: SectionProps) => (
+  <section
+    id={id}
+    className={
+      reverse
+        ? "bg-primary text-background w-screen lg:min-h-180 min-h-100 grid grid-cols-2 grid-flow-row place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center py-12 2xl:px-32 md:px-12 px-5"
+        : "w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center py-12 2xl:px-32 md:px-12 px-5"
+    }
+  >
+    <div
+      className={
+        reverse
+          ? "col-span-2 md:col-span-1 pt-12 lg:pt-0 order-1 md:order-2"
+          : "col-span-2 md:col-span-1 pt-12 lg:pt-0"
+      }
+    >
+      <h2 className="text-heading2">{title}</h2>
+      <article className="text-body mt-6 space-y-4">
+        <Paragraphs text={content} />
+      </article>
+    </div>
+
+    <div
+      className={
+        reverse
+          ? "col-span-2 md:col-span-1 order-2 md:order-1"
+          : "col-span-2 md:col-span-1"
+      }
+    >
+      <div className="grid grid-cols-2 gap-3">
+        {reverse ? (
+          <>
+            <ImageColumn images={images.right} variant="right" />
+            <ImageColumn images={images.left} variant="left" />
+          </>
+        ) : (
+          <>
+            <ImageColumn images={images.left} variant="left" />
+            <ImageColumn images={images.right} variant="right" />
+          </>
+        )}
+      </div>
+    </div>
+  </section>
+);
+
+const ProyekPage = async () => {
+  const programs = await getPrograms();
+
   return (
     <>
       <Header text="PROYEK KAMI" />
       <main className="w-screen min-h-screen">
         <ScrollToHash />
-        <section
-          id="jalak-bali"
-          className="w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center py-12 2xl:px-32 md:px-12 px-5 "
-        >
-          <div className="col-span-2 md:col-span-1 pt-12 lg:pt-0">
-            <h2 className="text-heading2">PENANGKARAN JALAK BALI</h2>
-            <article className="text-body mt-6">
-              Penangkaran Jalak Bali dimulai pada tahun 2019 sebagai bentuk
-              komitmen desa dalam konservasi burung endemik Bali dan menjaga
-              keseimbangan ekosistem. Saat ini populasi mencapai sekitar 60 ekor
-              dan sebagian telah hidup bebas di lingkungan desa.
-              <br />
-              <br />
-              Uniknya, penangkar Jalak Bali merupakan mantan pemburu burung yang
-              kini menjadi pelindung satwa. Kehadiran Jalak Bali turut
-              mengundang berbagai jenis burung lain seperti perkutut dan raja
-              udang, menjadikan desa sebagai habitat alami yang semakin hidup.
-            </article>
-          </div>
-          <div className="col-span-2 md:col-span-1">
-            <div className="grid grid-cols-2 gap-3">
-              {/* Left column */}
-              <div className="flex flex-col gap-3">
-                {jalak.left.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img.src}
-                    alt=""
-                    width={1000}
-                    height={1000}
-                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
-                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
-                    style={{ aspectRatio: "auto" }}
-                  />
-                ))}
-              </div>
 
-              {/* Right column */}
-              <div className="flex flex-col gap-3">
-                {jalak.right.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img.src}
-                    alt=""
-                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
-                    width={1000}
-                    height={1000}
-                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
-          id="daur-ulang"
-          className="bg-primary text-background w-screen lg:min-h-180 min-h-100 grid grid-cols-2 grid-flow-row place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center py-12 2xl:px-32 md:px-12 px-5"
-        >
-          <div className="col-span-2 md:col-span-1 order-2 md:order-1">
-            <div className="grid grid-cols-2 gap-3">
-              {/* Right column */}
-              <div className="flex flex-col gap-3">
-                {daur.right.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img.src}
-                    alt=""
-                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
-                    width={1000}
-                    height={1000}
-                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
-                  />
-                ))}
-              </div>
+        {programs.length === 0 && (
+          <p className="py-24 text-center text-body">
+            Data proyek belum tersedia.
+          </p>
+        )}
 
-              {/* Left column */}
-              <div className="flex flex-col gap-3">
-                {daur.left.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img.src}
-                    alt=""
-                    width={1000}
-                    height={1000}
-                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
-                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
-                    style={{ aspectRatio: "auto" }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="col-span-2 md:col-span-1 pt-12 lg:pt-0 order-1 md:order-2">
-            <h2 className="text-heading2">KERAJINAN DAUR ULANG</h2>
-            <article className="text-body mt-6">
-              Kerajinan daur ulang mulai dikembangkan sejak tahun 2018 oleh
-              kelompok ibu-ibu melalui Paiketan Krama Istri Eco Pertiwi.
-              Kegiatan ini bertujuan mengurangi sampah sekaligus meningkatkan
-              ekonomi kreatif masyarakat desa.
-              <br />
-              <br />
-              Berbagai produk ramah lingkungan dihasilkan seperti tas belanja,
-              dompet, gantungan kunci, dan kerajinan kreatif lainnya. Program
-              ini menjadi bagian dari gerakan desa hijau yang mendukung
-              keberlanjutan lingkungan dan pemberdayaan perempuan.
-            </article>
-          </div>
-        </section>
-        <section
-          id="perak"
-          className="w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center py-12 2xl:px-32 md:px-12 px-5"
-        >
-          <div className="col-span-2 md:col-span-1 pt-12 lg:pt-0">
-            <h2 className="text-heading2">KERAJINAN PERAK</h2>
-            <article className="text-body mt-6">
-              Kerajinan perak telah berkembang di Karang Dalem Tua sejak tahun
-              1980-an dan pernah menjadi mata pencaharian utama masyarakat, di
-              mana pada era 1990–1000 hampir seluruh warga merupakan pengrajin
-              perak. Meskipun jumlah pengrajin kini berkurang akibat perubahan
-              global, tradisi kerajinan ini tetap dilestarikan sebagai identitas
-              desa.
-              <br />
-              <br />
-              Berbagai produk perhiasan seperti cincin, gelang, kalung, liontin,
-              dan bros dibuat dengan teknik tradisional khas Bali. Saat ini,
-              kerajinan perak juga dikembangkan dalam bentuk Silver Workshop, di
-              mana pengunjung dapat belajar dan terlibat langsung dalam proses
-              pembuatan perak secara autentik.
-            </article>
-          </div>
-          <div className="col-span-2 md:col-span-1">
-            <div className="grid grid-cols-2 gap-3">
-              {/* Left column */}
-              <div className="flex flex-col gap-3">
-                {perak.left.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img.src}
-                    alt=""
-                    width={1000}
-                    height={1000}
-                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
-                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
-                    style={{ aspectRatio: "auto" }}
-                  />
-                ))}
-              </div>
+        {sections.map((section, i) => {
+          const item = programs[i];
+          if (!item) return null;
 
-              {/* Right column */}
-              <div className="flex flex-col gap-3">
-                {perak.right.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img.src}
-                    alt=""
-                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
-                    width={1000}
-                    height={1000}
-                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
-          id="lebah-madu"
-          className="bg-primary text-background w-screen lg:min-h-180 min-h-100 grid grid-cols-2 grid-flow-row place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center  py-12 2xl:px-32 md:px-12 px-5"
-        >
-          <div className="col-span-2 md:col-span-1 order-2 md:order-1">
-            <div className="grid grid-cols-2 gap-3">
-              {/* Right column */}
-              <div className="flex flex-col gap-3">
-                {lebah.right.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img.src}
-                    alt=""
-                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
-                    width={1000}
-                    height={1000}
-                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
-                  />
-                ))}
-              </div>
-
-              {/* Left column */}
-              <div className="flex flex-col gap-3">
-                {lebah.left.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img.src}
-                    alt=""
-                    width={1000}
-                    height={1000}
-                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
-                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
-                    style={{ aspectRatio: "auto" }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="col-span-2 md:col-span-1 pt-12 lg:pt-0 order-1 md:order-2">
-            <h2 className="text-heading2">BUDIDAYA LEBIH MADU</h2>
-            <article className="text-body mt-6">
-              Budidaya lebah madu Trigona mulai berkembang sebagai bagian dari
-              pertanian berkelanjutan desa. Lebah tanpa sengat ini menghasilkan
-              madu alami berkualitas tinggi dengan manfaat kesehatan yang baik
-              bagi tubuh.
-              <br />
-              <br />
-              Puluhan sarang lebah telah dikembangkan oleh beberapa keluarga
-              desa, dan selain sebagai sumber produksi madu, kegiatan ini juga
-              menjadi bagian dari edukasi wisata alam yang memperkenalkan
-              pentingnya keseimbangan ekosistem dan pertanian ramah lingkungan.
-            </article>
-          </div>
-        </section>
-        <section
-          id="biogas"
-          className="w-screen lg:min-h-180 min-h-100 bg-background grid grid-cols-2 place-items-center gap-8 md:gap-8 md:justify-items-center md:items-center py-12 2xl:px-32 md:px-12 px-5"
-        >
-          <div className="col-span-2 md:col-span-1 pt-12 lg:pt-0">
-            <h2 className="text-heading2">BIOGAS</h2>
-            <article className="text-body mt-6">
-              Program biogas dimulai sejak tahun 2018 sebagai upaya pengolahan
-              limbah ternak babi menjadi energi ramah lingkungan. Kotoran ternak
-              dimasukkan ke dalam digester, menghasilkan gas metan yang
-              digunakan sebagai bahan bakar memasak, sementara sisa proses
-              menjadi pupuk organik untuk pertanian.
-              <br />
-              <br />
-              Penerapan biogas membawa perubahan signifikan bagi desa, di
-              antaranya lingkungan menjadi lebih bersih dan bebas bau,
-              penggunaan LPG berkurang, serta limbah ternak dapat dimanfaatkan
-              menjadi energi dan pupuk yang mendukung pertanian berkelanjutan.
-            </article>
-          </div>
-          <div className="col-span-2 md:col-span-1">
-            <div className="grid grid-cols-2 gap-3">
-              {/* Left column */}
-              <div className="flex flex-col gap-3">
-                {biogas.left.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img.src}
-                    alt=""
-                    width={1000}
-                    height={1000}
-                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
-                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover"
-                    style={{ aspectRatio: "auto" }}
-                  />
-                ))}
-              </div>
-
-              {/* Right column */}
-              <div className="flex flex-col gap-3">
-                {biogas.right.map((img, i) => (
-                  <Image
-                    key={i}
-                    src={img.src}
-                    alt=""
-                    sizes="(max-width: 759px) calc((100vw - 52px) / 2), 260px"
-                    width={1000}
-                    height={1333}
-                    className="w-full aspect-square md:w-65 md:h-65 rounded-md object-cover flex-1"
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+          return (
+            <ProyekSection
+              key={item.id}
+              id={section.id}
+              images={section.images}
+              reverse={section.reverse}
+              title={item.title}
+              content={item.content}
+            />
+          );
+        })}
       </main>
     </>
   );

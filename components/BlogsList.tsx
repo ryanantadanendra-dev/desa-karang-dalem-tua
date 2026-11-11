@@ -34,7 +34,7 @@ const BlogsList = () => {
       ) : null}
       {blogs && blogs.data.length > 0 ? (
         <>
-          <div className="w-full lg:max-w-[70dvw] h-full grid grid-cols-2 md:grid-cols-3 gap-3 place-items-center mt-12 md:px-7">
+          <div className="w-full lg:max-w-[100dvw] h-full grid grid-cols-2 md:grid-cols-3 gap-3 place-items-center mt-12 md:px-7">
             {blogs?.data.map((blog, index) => (
               <BlogCard blog={blog} key={blog?.id} />
             ))}

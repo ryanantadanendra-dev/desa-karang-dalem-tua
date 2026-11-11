@@ -12,7 +12,7 @@ export default function LatestBlogs() {
 
   return (
     <section className="mx-auto w-[100dvw] px-0 py-12 md:px-0 md:py-12">
-      <div className="flex flex-wrap items-end justify-between gap-4">
+      <div className="flex flex-wrap items-end justify-between pe-0 md:pe-8 gap-4">
         <div className="md:ps-4 lg:ps-24">
           <h2 className="mt-1 font-semibold tracking-tight text-[#1B2433] text-heading2">
             Artikel Terbaru
@@ -31,7 +31,7 @@ export default function LatestBlogs() {
       </div>
 
       <div className="flex justify-center w-[100dvw]">
-        <div className="mt-20 grid grid-cols-2 gap-4 md:gap-20 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-20 grid grid-cols-2 gap-4 md:gap-20 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-4">
           {isLoading &&
             Array.from({ length: TOTAL }).map((_, i) => (
               <BlogCardSkeleton key={i} />

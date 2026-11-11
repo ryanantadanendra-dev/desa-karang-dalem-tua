@@ -47,7 +47,7 @@ const BlogsPage = () => {
     <>
       <Header text="KISAH PILIHAN" />
       <main className="w-dvw min-h-screen py-12 overflow-x-hidden">
-        <h2 className="text-heading text-4xl font-bold ms-7">
+        <h2 className="text-heading text-4xl font-bold text-center md:text-start md:ms-7">
           Semua Artikel Kami
         </h2>
         <BlogsList />
