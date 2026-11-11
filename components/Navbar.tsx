@@ -174,7 +174,7 @@ export default function Navbar() {
 
                   <div
                     className={`overflow-hidden pl-4 transition-[max-height] duration-300 ease-in-out ${
-                      mobileSubmenu === link.label ? "max-h-40" : "max-h-0"
+                      mobileSubmenu === link.label ? "max-h-50" : "max-h-0"
                     }`}
                   >
                     <ul className="flex flex-col gap-1 py-1">

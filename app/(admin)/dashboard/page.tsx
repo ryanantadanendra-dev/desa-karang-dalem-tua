@@ -8,8 +8,10 @@ const totalBlog = 12;
 const totalPlatform = 5;
 
 const cards = [
-  { label: "Jumlah blog", value: totalBlog },
-  { label: "Jumlah platform media sosial", value: totalPlatform },
+  { label: "Jumlah blog" },
+  { label: "Jumlah platform media sosial" },
+  { label: "Jumlah Program" },
+  { label: "Jumlah Tradisi" },
 ];
 
 export default function DashboardHome() {

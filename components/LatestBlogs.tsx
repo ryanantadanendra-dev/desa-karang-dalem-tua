@@ -12,8 +12,8 @@ export default function LatestBlogs() {
 
   return (
     <section className="mx-auto w-[100dvw] px-0 py-12 md:px-0 md:py-12">
-      <div className="flex flex-wrap items-end justify-between pe-0 md:pe-8 gap-4">
-        <div className="md:ps-4 lg:ps-24">
+      <div className="flex flex-wrap items-end justify-between pe-0 md:pe-8 px-12 md:px-0 gap-4">
+        <div className=" md:ps-4 lg:ps-24">
           <h2 className="mt-1 font-semibold tracking-tight text-[#1B2433] text-heading2">
             Artikel Terbaru
           </h2>
